@@ -45,6 +45,15 @@ class WastewaterMonitor:
                 "TN": 25,
                 "TP": 2
             }
+        elif self.industry == "공공폐수":
+            return {
+                "pH": (5.8, 8.6),
+                "COD": 40,
+                "heavy_metal": 0.3,
+                "SS": 20,
+                "TN": 10,
+                "TP": 0.5
+            }
         else:
             raise ValueError("지원하지 않는 업종입니다.")
 
@@ -95,7 +104,7 @@ if __name__ == "__main__":
     print("공장 폐수 업종별 평가 프로그램")
 
     name = input("공장명을 입력하세요: ")
-    print("업종을 선택하세요 (식품 / 도금 / 제지)")
+    print("업종을 선택하세요 (식품 / 도금 / 제지 / 공공폐수)")
     industry = input("업종 입력: ").strip()
 
     pH = safe_float_input("pH 값을 입력하세요: ")
@@ -107,3 +116,4 @@ if __name__ == "__main__":
 
     monitor = WastewaterMonitor(name, industry, pH, COD, heavy_metal, SS, TN, TP)
     print(monitor.get_report())
+
